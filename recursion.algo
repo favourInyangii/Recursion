@@ -1,0 +1,33 @@
+FUNCTION IsPalindrome(word:STRING) : STRING
+VAR
+    newWord : STRING;  // Variable to store the word without the first and last characters
+    firstLetter : CHAR; // Variable to store the first character of the word
+    lastLetter : CHAR; // Variable to store the last character of the word
+    n : INTEGER: word.length; // this variable is used to rep the length of the word
+BEGIN
+    IF (n=0 or n=1) THEN
+        return "is Palindrome" // Return "is Palindrome" if the word has 0 or 1 character
+    END_IF
+    FUNCTION IsPalindrome(word: INTEGER): STRING
+VAR
+    newWord: STRING;  // Variable to store the word without the first and last characters
+    firstLetter: CHAR;  // Variable to store the first character of the word
+    lastLetter: CHAR;  // Variable to store the last character of the word
+    n: INTEGER: word.length;  // Variable to store the length of the word
+BEGIN
+    IF (n = 0 or n = 1) THEN
+        return "is Palindrome"  // Return "is Palindrome" if the word has 0 or 1 character
+    END_IF
+    // Check if the first and last characters are the same
+    firstLetter = word[0]
+    lastLetter = word[n - 1]
+    IF (firstLetter = lastLetter) THEN
+        FOR i FROM 1 TO n - 2 STEP step  DO
+            newWord[i - 1] = word[i]  // Copy characters from word to newWord, excluding the first and last characters
+        END_FOR
+        return IsPalindrome(newWord)  // Recur with newWord (without first and last characters) until there's 1 or 0 character left
+    ELSE
+        return "is not Palindrome"  // Return "is not Palindrome" if the first and last characters are not the same
+    END_IF
+    // Move to the next letter in line
+END
